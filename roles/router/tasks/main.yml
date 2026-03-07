@@ -1,0 +1,6 @@
+---
+# tasks file for router
+- name: Generate Config Files
+  ansible.builtin.debug:
+    msg: Hello {{ item.hostname }}
+  with_items: "{{ routers }}"

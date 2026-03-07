@@ -1,0 +1,6 @@
+---
+# vars file for router
+routers:
+  - hostname: R1
+  - hostname: R2
+  - hostname: R3
