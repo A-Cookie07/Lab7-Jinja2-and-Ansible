@@ -18,7 +18,7 @@ def create_vars_file(filename):
 
 def main():
     #print("This is working!")
-    create_vars_file('vars.yaml')
+    create_vars_file('./roles/router/vars/main.yml')
 
 
 if __name__ == "__main__":

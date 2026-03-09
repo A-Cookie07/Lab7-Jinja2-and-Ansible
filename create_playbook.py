@@ -3,7 +3,7 @@ import os
 import subprocess
 import pandas
 import yaml
-
+import shutil
 
 def create_directory(dir_name):
     try:
@@ -54,12 +54,11 @@ def main():
     
     create_main_play()
 
-    create_vars_file("./roles/router/main.yml")
+    create_vars_file("./roles/router/vars/main.yml")
 
     #create_tasks
     with open("./roles/router/tasks/main.yml", "w") as wptr:
-        tasks = '''
----
+        tasks = '''---
 # tasks file for router
 - name: Generate Config Files
   ansible.builtin.debug:
@@ -68,11 +67,17 @@ def main():
 - name: Create Conf Files
   template:
     src: router_template.j2
-    dest: "./R2.cfg"
+    dest: "./{{ item }}.txt"
   vars:
-    hostname: "R2"
+    hostname: "{{ item }}"
+  loop:
+    - "R1"
+    - "R2"
+    - "R3"
 '''
         wptr.write(tasks)
+
+    shutil.copyfile('./router_template.j2', './roles/router/templates/router_template.j2')
 
 
     return 0

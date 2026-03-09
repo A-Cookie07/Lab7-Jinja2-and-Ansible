@@ -7,6 +7,10 @@
 - name: Create Conf Files
   template:
     src: router_template.j2
-    dest: "./R2.cfg"
+    dest: "./{{ item }}.txt"
   vars:
-    hostname: "R2"
+    hostname: "{{ item }}"
+  loop:
+    - "R1"
+    - "R2"
+    - "R3"

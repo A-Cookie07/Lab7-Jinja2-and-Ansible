@@ -1,5 +1,3 @@
----
-# vars file for router
 R1:
 - InterfaceName: '1'
   InterfaceType: Loopback
