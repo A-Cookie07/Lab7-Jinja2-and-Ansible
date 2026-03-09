@@ -4,6 +4,9 @@ import jinja2
 def main():
     test_item = {
         'address00': "10.0.0.1 255.255.255.0",
+        'if0ospfarea': '0',
+        'if0processid': '1',
+        'if0ospfarea': '0',
         'address10': "10.0.1.1 255.255.255.0",
         'address20': "10.0.2.1 255.255.255.0",
         'addresslo': "25.25.25.25 255.255.255.255"

@@ -2,5 +2,11 @@
 # tasks file for router
 - name: Generate Config Files
   ansible.builtin.debug:
-    msg: Hello {{ item.hostname }}
-  with_items: "{{ routers }}"
+    msg: Hello
+
+- name: Create Conf Files
+  template:
+    src: router_template.j2
+    dest: "./R2.cfg"
+  vars:
+    hostname: "R2"

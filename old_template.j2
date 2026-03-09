@@ -1,0 +1,45 @@
+!
+hostname {{ item.hostname }}
+!
+interface FastEthernet 0/0
+ ip address {{ item.address0 }}
+ duplex auto
+ speed auto
+ no shutdown
+ {% if item.if0ospfarea %}
+ ip ospf {{ item.if0processid }} area {{ item.if0ospfarea }}
+ {% endif %}
+ exit
+!
+interface FastEthernet 1/0
+ ip address {{ item.address1 }}
+ duplex auto
+ speed auto
+ no shutdown
+ {% if item.if1ospfarea %}
+ ospf {{ item.if1processid }} area {{ item.if1ospfarea }}
+ {% endif %}
+ exit
+!
+{% if item.address2 %}
+interface FastEthernet 2/0
+ ip address {{ item.address2 }}
+ duplex auto
+ speed auto
+ no shutdown
+ {% if item.if2ospfarea %}
+ ospf {{ item.if2processid }} area {{ item.if2ospfarea }}
+ {% endif %}
+ exit
+{% endif %}
+!
+interface Loopback1
+ ip address {{ item.addresslo }}
+ duplex auto
+ speed auto
+ no shutdown
+ {% if item.ifloospfarea %}
+ ospf {{ item.ifloprocessid }} area {{ item.ifloospfarea }}
+ {% endif %}
+ exit
+!
