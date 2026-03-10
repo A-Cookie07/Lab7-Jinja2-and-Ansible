@@ -23,7 +23,7 @@ interface FastEthernet1/0
  no shutdown
  ip ospf 1 area 0
   exit
-interface FastEthernet2/0
+interface GigabitEthernet2/0
  ip address 198.51.102.3 255.255.255.0
  duplex auto
  speed auto

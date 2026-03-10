@@ -1,0 +1,16 @@
+!
+hostname {{ hostname }}
+!
+
+{% for ifce in vars[hostname] %}
+interface {{ifce.InterfaceType}}{{ifce.InterfaceName}}
+ ip address {{ ifce.Ip_Subnet }}
+ duplex auto
+ speed auto
+ no shutdown
+ {% if ifce.OSPFEnabled == 'Yes' %}
+ip ospf {{ ifce.OSPFProcessID }} area {{ ifce.OSPFArea }}
+ {% endif %}
+ exit
+{% endfor %}
+!
